@@ -1,0 +1,38 @@
+<form>
+  <h3 class="text-center">Search</h3>
+  <div class="ml-2" class="form-group flex flex-v-center">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control ml-2"
+      id="name"
+      [(ngModel)]="model.name"
+      name="name"
+    />
+
+    <button
+      class="ml-2 color-switch"
+      (click)="submitData({ name: model.name })"
+    >
+      Search
+    </button>
+  </div>
+
+  <div class="form-group flex flex-v-center my-4">
+    <label for="color">Color</label>
+    <select
+      type="select"
+      class="form-control select ml-2"
+      id="color"
+      [(ngModel)]="model.color"
+      (ngModelChange)="submitData({ color: model.color })"
+      name="color"
+    >
+      <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
+    </select>
+
+    <button class="ml-2" *ngIf="model.color !== ''" (click)="clearColor()">
+      Clear color
+    </button>
+  </div>
+</form>

@@ -1,0 +1,80 @@
+<div
+  class="modal fade py-12"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalLabel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog py-3 px-3 simple-shadow-border bg-light"
+    role="document"
+    *ngIf="data"
+  >
+    <div>
+      <h5 class="modal-title" id="exampleModalLabel">
+        {{ data["title"] | titlecase }}
+      </h5>
+      <button
+        (click)="onClose()"
+        type="button"
+        class="button-close"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="tiles">
+      <ng-container *ngFor="let key of getKeys()">
+        <div
+          class="tile flex flex-dir-col flex-h-center relative simple-shadow-border"
+          *ngIf="!(data.data[key].uiDisplay === false)"
+        >
+          <div class="text-bold flex-100 badge badge-corner badge-dark">
+            {{ data.data[key]?.label || key | titlecase }}
+          </div>
+          <ng-container *ngIf="data.data[key].uiDisplay === 'image'">
+            <app-spinner
+              class="flex flex-h-center flex-v-center"
+              [class.d-none]="imageLoaded" />
+            <img
+              class="modal-image"
+              [class.d-none]="!imageLoaded"
+              [src]="data.data[key].url || data.data[key].value"
+              alt="{{ data.data[key] }}"
+              (load)="onImageLoad()"
+          /></ng-container>
+          <ng-container *ngIf="data.data[key].uiDisplay === 'namedProperty'">
+            <p class="text-center">
+              {{ data.data[key]?.value }}
+            </p>
+          </ng-container>
+          <ng-container *ngIf="isNested(data.data[key])">
+            <p
+              *ngFor="let nestedItem of data.data[key]"
+              class="modal-info inline-flex simple-shadow-border"
+            >
+              <span
+                class="badge"
+                [class.badge-success]="nestedItem.value > 75"
+                [class.badge-warning]="
+                  nestedItem.value > 25 && nestedItem.value <= 50
+                "
+                [class.badge-danger]="nestedItem.value <= 25"
+                >{{ nestedItem.label | titlecase }}</span
+              >{{ nestedItem.value }}
+            </p></ng-container
+          >
+          <p class="text-center" *ngIf="getType(data.data[key]) === 'boolean'">
+            {{ data.data[key] ? "Yes" : "No" }}
+          </p>
+          <p class="text-center" *ngIf="getType(data.data[key]) === 'string'">
+            {{ data.data[key] | titlecase }}
+          </p>
+          <p class="text-center" *ngIf="getType(data.data[key]) === 'number'">
+            {{ data.data[key] }}
+          </p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

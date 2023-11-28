@@ -1,0 +1,26 @@
+<div class="container flex flex-h-center">
+  <app-search-form (submit)="getData($event)" />
+</div>
+
+<div class="container flex">
+  <app-card
+    @fadeSlideInOut
+    *ngFor="let pokemon of pokemons$ | async"
+    [card]="{
+      title: pokemon.name,
+      data: pokemon.urlData!.value,
+      actionTitle: 'Details'
+    }"
+    (action)="showDetails($event)"
+    class="flex flex-col-md-4 flex-col-lg-3 flex-col-sm-6 flex-col"
+  ></app-card>
+  <div class="flex-100 flex flex-h-center py-12" *ngIf="!isSpecie">
+    <button class="color-switch" (click)="loadMore()">{{ buttonText }}</button>
+  </div>
+</div>
+<app-modal
+  @fadeSlideInOut
+  *ngIf="showModal && pokemonModal"
+  (close)="showModal = false"
+  [data]="pokemonModal"
+></app-modal>

@@ -1,0 +1,68 @@
+@import '../../../../variables.scss';
+
+.modal {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background-transparent;
+
+    .modal-dialog {
+        margin-right: auto;
+        margin-left: auto;
+        max-width: 550px;
+        background-color: $background-lighter;
+        position: relative;
+    }
+
+    .modal-info {
+        height: 20px;
+        margin-right: 1rem;
+        padding: .2rem .4rem;
+        border-radius: 0.5rem;
+    }
+
+    .modal-image {
+        width: 250px;
+        object-fit: cover;
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    .tile  {
+        padding: 1rem;
+    }
+
+    .tiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+    }
+}
+
+@media  (max-width: 630px) {
+    .modal {
+        position: fixed;
+        top: 0 ;
+        left: 0;
+        padding-top: 0 !important;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        display: flex;
+        justify-content: center ;
+        align-items: center;
+
+        & .modal-dialog {
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+        }
+
+        & .modal-image {
+            width: 30vw;
+            object-fit: cover;
+            border-radius: 0;
+        }
+    }
+    
+}
