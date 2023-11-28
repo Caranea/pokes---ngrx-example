@@ -8,7 +8,7 @@ Inside the main features, we have several additional layers. In /feature and /ui
 
 ## Data mapping 
 
-I started with mapping out the data we get from poke API and planning the object structure I need to create from it. It lives in pokemon.model.ts. So inconsistencies in API reflect in the application- for example when searching by color, pokeAPI returns species instead of pokemons which have difficult data I needed to display.
+I started with mapping out the data we get from poke API and planning the object structure I need to create from it. It lives in pokemon.model.ts. So inconsistencies in API reflect in the application- for example when searching by color, pokeAPI returns species instead of pokemons which have different structure I needed to display.
 
 ## Store and caching
 
