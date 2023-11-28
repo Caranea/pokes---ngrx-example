@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'pokemons',
+    path: '/',
     loadComponent: () =>
       import('./pokemons/feature/pokemon.component').then(
         c => c.PokemonComponent
