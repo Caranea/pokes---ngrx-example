@@ -12,7 +12,7 @@ I started with mapping out the data we get from poke API and planning the object
 
 ## Store and caching
 
-I used the ngrx library to manage the application state. This allows us to offload most of the logic from components which only have to worry about dispatching actions and managing data from the store, which would prove very useful once we start implementing more features, it serves as a cache mechanism, as I implemented saving the data in the local storage. A service will make the API call only if the data is not found in the store. 
+I used the ngrx library to manage the application state. This allows us to offload most of the logic from components which only have to worry about dispatching actions and managing data from the store, which would prove very useful once we start implementing more features, it serves as a cache mechanism. A service will make the API call only if the data is not found in the store. I implemented saving the data in the local storage for data persistence.
 
 Note: due to limited time, I didn't implement "getting a single species detail" in a store. Hence it doesn't cache.
 Note: Certain collections, for example, pokemon with details, are arrays of objects that in theory could get quite big over time. If I wasn't constrained by time, I'd change them to objects with keys to access elements, to avoid time-consuming array searching to improve performance.
