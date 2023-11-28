@@ -8,7 +8,7 @@ Inside the main features, we have several additional layers. In /feature and /ui
 
 ## Data mapping 
 
-I started with mapping out the data we get from poke API and planning the object structure I need to create from it. It lives in pokemon.model.ts. Some inconsistencies in API reflect in the application- for example when searching by color, pokeAPI returns species instead of pokemons which have different structure I needed to display.
+I started with mapping out the data we get from poke API and planning the object structure I need to create from it. It lives in pokemon.model.ts. Some inconsistencies in API reflect in the application- for example when searching by color, pokeAPI returns species instead of pokemons which have different structure I needed to display. Note: PokeAbi doesn't provide pagination in their by color endpoint, hence the app displays all species at once. 
 
 ## Store and caching
 
@@ -40,6 +40,10 @@ As a final touch, I used eslint and prettier to format and lint my code.
 ## Final notes
 
 Some of the libraries I used are not fully compatible with v17. When installing dependencies, using -f might be necessary.
+
+## Tests 
+
+Due to time constraints, application is not tested yet. In real life example, writing tests for data heavy functionalities, like pokemont.component, would be crucial.
 
 
 ---
