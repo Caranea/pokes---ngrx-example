@@ -86,7 +86,7 @@ class Pokemon implements IPokemon {
       url: pokemonData.sprites?.other.dream_world.front_default!,
       uiDisplay: 'image',
     };
-    this.statistics = pokemonData.stats?.map((stat) => {
+    this.statistics = pokemonData.stats?.map(stat => {
       return {
         label: stat.stat.name,
         value: stat.base_stat,

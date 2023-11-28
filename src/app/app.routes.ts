@@ -5,7 +5,7 @@ export const routes: Routes = [
     path: 'pokemons',
     loadComponent: () =>
       import('./pokemons/feature/pokemon.component').then(
-        (c) => c.PokemonComponent
+        c => c.PokemonComponent
       ),
   },
   {

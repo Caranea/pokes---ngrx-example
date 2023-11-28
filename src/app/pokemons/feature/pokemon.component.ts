@@ -46,12 +46,12 @@ export class PokemonComponent {
   public showModal: boolean = true;
 
   constructor() {
-    this.pokemonFacade.pokemons$.pipe(take(1)).subscribe((pokemons) => {
+    this.pokemonFacade.pokemons$.pipe(take(1)).subscribe(pokemons => {
       if (pokemons.length === 0) {
         this.loadMore();
       }
     });
-    this.status$.subscribe((status) => {
+    this.status$.subscribe(status => {
       if (status?.state === ELoadingStatus.LOADING) {
         this.buttonText = 'Loading...';
       } else {
@@ -66,7 +66,7 @@ export class PokemonComponent {
 
   showDetails(url: string) {
     if (this.isSpecie) {
-      this.pokemonService.getSpecie(url).subscribe((result) => {
+      this.pokemonService.getSpecie(url).subscribe(result => {
         const specie = new Specie(result as ISpecieResponse);
         this.displayPokemon(
           {
@@ -80,7 +80,7 @@ export class PokemonComponent {
       if (this.selectedUrl === url) {
         this.showModal = true;
       } else {
-        this.pokemon$.pipe(skip(1), take(1)).subscribe((pokemonData) => {
+        this.pokemon$.pipe(skip(1), take(1)).subscribe(pokemonData => {
           this.displayPokemon({
             title: pokemonData!.name,
             data: { ...pokemonData! },

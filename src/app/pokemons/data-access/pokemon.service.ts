@@ -19,7 +19,7 @@ export class PokemonService {
 
   getPokemons(offset: number, limit: number) {
     return this.http.get(urls.base + urls.getPokemons(offset, limit)).pipe(
-      map((result) => {
+      map(result => {
         return result;
       })
     );
@@ -27,7 +27,7 @@ export class PokemonService {
 
   getPokemon(url: string) {
     return this.http.get(url).pipe(
-      map((result) => {
+      map(result => {
         return result;
       })
     );
@@ -35,7 +35,7 @@ export class PokemonService {
 
   searchByName(name: string) {
     return this.http.get(urls.base + 'pokemon/' + name).pipe(
-      map((result) => {
+      map(result => {
         return result;
       })
     );
@@ -43,10 +43,10 @@ export class PokemonService {
 
   searchByColor(color: string) {
     return this.http.get(urls.base + 'pokemon-color/' + color).pipe(
-      map((result) => {
+      map(result => {
         return result;
       }),
-      catchError((error) =>
+      catchError(error =>
         of(
           getPokemonsFailure({
             message: error.message,
@@ -59,7 +59,7 @@ export class PokemonService {
 
   getSpecie(url: string) {
     return this.http.get(url).pipe(
-      map((result) => {
+      map(result => {
         return result;
       })
     );

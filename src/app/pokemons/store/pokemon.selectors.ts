@@ -28,7 +28,7 @@ const selectSpecies = createSelector(
 );
 
 const selectSpeciesByColor = (color: string) =>
-  createSelector(selectSpecies, (species) => species[color]);
+  createSelector(selectSpecies, species => species[color]);
 
 export {
   selectPokemons,

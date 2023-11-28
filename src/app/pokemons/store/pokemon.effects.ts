@@ -35,10 +35,10 @@ export class pokemonEffects {
       this.currentOffset$,
       this.actions$.pipe(ofType(getPokemons)),
     ]).pipe(
-      exhaustMap((result) => {
+      exhaustMap(result => {
         const currentOffset = result[0];
         return this.pokemonService.getPokemons(currentOffset, 10).pipe(
-          map((result) => {
+          map(result => {
             const pokemons: IPokemon[] = [];
             (result as any).results.forEach((pokemon: any) => {
               pokemons.push({
@@ -52,7 +52,7 @@ export class pokemonEffects {
             });
             return getPokemonsSuccess({ pokemons });
           }),
-          catchError((error) =>
+          catchError(error =>
             of(
               getPokemonsFailure({
                 message: error.message,
@@ -70,7 +70,7 @@ export class pokemonEffects {
       this.actions$.pipe(ofType(getPokemon)),
       this.detailedPokemons$,
     ]).pipe(
-      exhaustMap((result) => {
+      exhaustMap(result => {
         const url = result[0].url;
         const detailedPokemons = result[1];
         const cachedPokemon = detailedPokemons?.find(
@@ -86,12 +86,12 @@ export class pokemonEffects {
           : this.pokemonService.getPokemon(url);
 
         return service.pipe(
-          map((result) => {
+          map(result => {
             console.log(result);
             const pokemon = new Pokemon(result as IPokemonResponse, url);
             return getPokemonSuccess({ pokemon });
           }),
-          catchError((error) =>
+          catchError(error =>
             of(
               getPokemonsFailure({
                 message: error.message,
@@ -106,7 +106,7 @@ export class pokemonEffects {
 
   $species = createEffect(() =>
     combineLatest([this.actions$.pipe(ofType(getSpecies)), this.species$]).pipe(
-      exhaustMap((result) => {
+      exhaustMap(result => {
         const color = result[0].color;
         const cachedSpecies = result[1][color];
 
@@ -131,7 +131,7 @@ export class pokemonEffects {
             });
             return getSpeciesSuccess({ species, color: color });
           }),
-          catchError((error) =>
+          catchError(error =>
             of(
               getPokemonsFailure({
                 message: error.message,

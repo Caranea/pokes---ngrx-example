@@ -12,8 +12,7 @@
       actionTitle: 'Details'
     }"
     (action)="showDetails($event)"
-    class="flex flex-col-md-4 flex-col-lg-3 flex-col-sm-6 flex-col"
-  ></app-card>
+    class="flex flex-col-md-4 flex-col-lg-3 flex-col-sm-6 flex-col"></app-card>
   <div class="flex-100 flex flex-h-center py-12" *ngIf="!isSpecie">
     <button class="color-switch" (click)="loadMore()">{{ buttonText }}</button>
   </div>
@@ -22,5 +21,4 @@
   @fadeSlideInOut
   *ngIf="showModal && pokemonModal"
   (close)="showModal = false"
-  [data]="pokemonModal"
-></app-modal>
+  [data]="pokemonModal"></app-modal>

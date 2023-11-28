@@ -12,7 +12,7 @@ import {
 const internalReducer = createReducer(
   pokemonState.initialPokemonState,
 
-  on(pokemonActions.getPokemons, (state) => {
+  on(pokemonActions.getPokemons, state => {
     const status: ILoadingInProgressState = {
       state: ELoadingStatus.LOADING,
     };

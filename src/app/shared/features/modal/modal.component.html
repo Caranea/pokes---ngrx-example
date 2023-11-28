@@ -3,23 +3,20 @@
   tabindex="-1"
   role="dialog"
   aria-labelledby="modalLabel"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div
     class="modal-dialog py-3 px-3 simple-shadow-border bg-light"
     role="document"
-    *ngIf="data"
-  >
+    *ngIf="data">
     <div>
       <h5 class="modal-title" id="exampleModalLabel">
-        {{ data["title"] | titlecase }}
+        {{ data['title'] | titlecase }}
       </h5>
       <button
         (click)="onClose()"
         type="button"
         class="button-close"
-        aria-label="Close"
-      >
+        aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -27,8 +24,7 @@
       <ng-container *ngFor="let key of getKeys()">
         <div
           class="tile flex flex-dir-col flex-h-center relative simple-shadow-border"
-          *ngIf="!(data.data[key].uiDisplay === false)"
-        >
+          *ngIf="!(data.data[key].uiDisplay === false)">
           <div class="text-bold flex-100 badge badge-corner badge-dark">
             {{ data.data[key]?.label || key | titlecase }}
           </div>
@@ -51,8 +47,7 @@
           <ng-container *ngIf="isNested(data.data[key])">
             <p
               *ngFor="let nestedItem of data.data[key]"
-              class="modal-info inline-flex simple-shadow-border"
-            >
+              class="modal-info inline-flex simple-shadow-border">
               <span
                 class="badge"
                 [class.badge-success]="nestedItem.value > 75"
@@ -65,7 +60,7 @@
             </p></ng-container
           >
           <p class="text-center" *ngIf="getType(data.data[key]) === 'boolean'">
-            {{ data.data[key] ? "Yes" : "No" }}
+            {{ data.data[key] ? 'Yes' : 'No' }}
           </p>
           <p class="text-center" *ngIf="getType(data.data[key]) === 'string'">
             {{ data.data[key] | titlecase }}

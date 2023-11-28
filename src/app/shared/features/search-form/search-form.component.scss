@@ -1,31 +1,33 @@
 @import '../../../../variables.scss';
 
 .form-control {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  border-radius: 0.375rem;
+  box-shadow: 0 0 0 0.05rem $background-transparent;
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  width: 100px;
+
+  &.select {
+    -webkit-appearance: auto;
+    appearance: auto;
+  }
+
+  &:focus {
     outline: none;
     border: none;
-    border-radius: 0.375rem;
-    box-shadow: 0 0 0 0.05rem $background-transparent;
-    display: block;
-    font-size: .875rem;
-    font-weight: 400;
-    padding: 0.5rem 1rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    width: 100px;
-
-    &.select {
-        -webkit-appearance: auto;
-        appearance:auto;
-    }
-
-    &:focus {
-        outline: none;
-        border: none;
-        box-shadow: 0 0 0 0.2rem rgba(98, 75, 255, 0.25);
-    }
+    box-shadow: 0 0 0 0.2rem rgba(98, 75, 255, 0.25);
+  }
 }
 .form-group label {
-    display: block;
+  display: block;
 }

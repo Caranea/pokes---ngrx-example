@@ -7,13 +7,11 @@
       class="form-control ml-2"
       id="name"
       [(ngModel)]="model.name"
-      name="name"
-    />
+      name="name" />
 
     <button
       class="ml-2 color-switch"
-      (click)="submitData({ name: model.name })"
-    >
+      (click)="submitData({ name: model.name })">
       Search
     </button>
   </div>
@@ -26,8 +24,7 @@
       id="color"
       [(ngModel)]="model.color"
       (ngModelChange)="submitData({ color: model.color })"
-      name="color"
-    >
+      name="color">
       <option *ngFor="let color of colors" [value]="color">{{ color }}</option>
     </select>
 
