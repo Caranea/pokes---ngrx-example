@@ -81,10 +81,13 @@ export class PokemonComponent {
         this.showModal = true;
       } else {
         this.pokemon$.pipe(skip(1), take(1)).subscribe(pokemonData => {
-          this.displayPokemon({
-            title: pokemonData!.name,
-            data: { ...pokemonData! },
-          });
+          this.displayPokemon(
+            {
+              title: pokemonData!.name,
+              data: { ...pokemonData! },
+            },
+            url
+          );
         });
         this.pokemonFacade.getPokemon(url);
       }

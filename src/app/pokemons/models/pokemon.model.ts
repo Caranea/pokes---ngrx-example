@@ -1,10 +1,4 @@
-type TDisplay = 'nestedObject' | 'image' | 'namedProperty';
-interface IPokemonProperty {
-  label: string;
-  url?: string;
-  value?: string | number | boolean;
-  uiDisplay?: false | TDisplay;
-}
+import { IDisplayProperty } from '../../shared/models/display.model';
 
 interface IPokemonStat {
   baseStat: number;
@@ -20,27 +14,27 @@ interface IPokemonStatResponse extends IPokemonStat {
 }
 
 interface IPokemon {
-  baseExperience?: IPokemonProperty;
+  baseExperience?: IDisplayProperty;
   height?: number;
   id?: number;
-  isDefault?: IPokemonProperty;
+  isDefault?: IDisplayProperty;
   name: string;
   order?: number;
-  picture?: IPokemonProperty;
-  urlData: IPokemonProperty;
-  statistics?: IPokemonProperty[];
-  types?: IPokemonProperty[];
+  picture?: IDisplayProperty;
+  urlData: IDisplayProperty;
+  statistics?: IDisplayProperty[];
+  types?: IDisplayProperty[];
   weight?: number;
 }
 
 interface ISpecie {
-  baseExperience?: IPokemonProperty;
-  baseHappiness?: IPokemonProperty;
-  captureRate?: IPokemonProperty;
-  isBaby?: IPokemonProperty;
+  baseExperience?: IDisplayProperty;
+  baseHappiness?: IDisplayProperty;
+  captureRate?: IDisplayProperty;
+  isBaby?: IDisplayProperty;
   name: string;
-  urlData: IPokemonProperty;
-  description?: IPokemonProperty;
+  urlData: IDisplayProperty;
+  description?: IDisplayProperty;
 }
 
 interface ISpecieResponse extends ISpecie {
@@ -72,12 +66,12 @@ interface IPokemonResponse extends IPokemon {
 }
 
 class Pokemon implements IPokemon {
-  picture?: IPokemonProperty;
-  statistics?: IPokemonProperty[];
-  baseExperience?: IPokemonProperty;
+  picture?: IDisplayProperty;
+  statistics?: IDisplayProperty[];
+  baseExperience?: IDisplayProperty;
   height?: number;
   name: string;
-  urlData: IPokemonProperty;
+  urlData: IDisplayProperty;
   weight?: number;
 
   constructor(pokemonData: IPokemonResponse, url: string) {
@@ -90,7 +84,7 @@ class Pokemon implements IPokemon {
       return {
         label: stat.stat.name,
         value: stat.base_stat,
-      } as IPokemonProperty;
+      } as IDisplayProperty;
     });
     this.baseExperience = {
       value: pokemonData.base_experience,
@@ -109,12 +103,12 @@ class Pokemon implements IPokemon {
 }
 
 class Specie implements ISpecie {
-  baseHappiness?: IPokemonProperty;
-  captureRate?: IPokemonProperty;
-  isBaby?: IPokemonProperty;
-  description?: IPokemonProperty;
+  baseHappiness?: IDisplayProperty;
+  captureRate?: IDisplayProperty;
+  isBaby?: IDisplayProperty;
+  description?: IDisplayProperty;
   name: string;
-  urlData: IPokemonProperty;
+  urlData: IDisplayProperty;
 
   constructor(specieData: ISpecieResponse) {
     this.baseHappiness = {
@@ -150,7 +144,7 @@ class Specie implements ISpecie {
 }
 
 export {
-  IPokemonProperty,
+  IDisplayProperty,
   IPokemonStat,
   IPokemon,
   Pokemon,

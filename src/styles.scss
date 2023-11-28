@@ -172,6 +172,18 @@ h5 {
   font-weight: 600;
 }
 
+// GRID
+
+.tile {
+  padding: 1rem;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
 // BUTTONS
 
 button {
