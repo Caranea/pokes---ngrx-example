@@ -35,7 +35,7 @@ I used SCSS for styling files. I tried to keep reusable rules in the main file w
 
 ## Project management tools
 
-As a final touch, I used eslint and prettier to catch format and lint my code.
+As a final touch, I used eslint and prettier to format and lint my code.
 
 ## Final notes
 
