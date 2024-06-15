@@ -1,4 +1,4 @@
-# Pokemons
+# Ngrx store - Angular architecture example
 
 ## Project structure
 
